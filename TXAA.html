@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Տղայի խոսքը․ արյուն ասֆալտի վրա - Hayafilm</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f0f12;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .series-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Responsive 16:9 Aspect Ratio Container */
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Episode Navigation Grid */
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .ep-btn {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .ep-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .ep-btn.active {
+            background-color: #e50914;
+            border-color: #e50914;
+        }
+
+        /* Navigation / Control Bar */
+        .player-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+
+    <main class="video-container">
+        <h1 class="series-title" id="current-ep-title">Առաջին սերիա</h1>
+
+        <!-- Responsive Player Wrapper -->
+        <div class="player-wrapper">
+            <iframe 
+                id="main-player"
+                src="https://armdb.org/player/71664?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2F31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Episode Selector List -->
+        <div class="episodes-grid">
+            <button class="ep-btn active" onclick="changeEpisode('https://armdb.org/player/71664?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2F31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Առաջին սերիա', this)">1-ին սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/71847?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C2%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Երկրորդ սերիա', this)">2-րդ սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/72084?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C3%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Երրորդ սերիա', this)">3-րդ սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/72228?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C4%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Չորրորդ սերիա', this)">4-րդ սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/72523?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C5%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Հինգերորդ սերիա', this)">5-րդ սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/72577?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C6%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Վեցերորդ սերիա', this)">6-րդ սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/72590?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C7%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Յոթերորդ սերիա', this)">7-րդ սերիա</button>
+            <button class="ep-btn" onclick="changeEpisode('https://armdb.org/player/72599?origin_url=https%3A%2F%2Farmfilm.co%2Fhy%2Fserialner-hayeren-tarkmanutyamb%2Fpage%2C8%2C31317-txayi-xosqy-aryun-asfalti-vra-hayeren.html', 'Ութերորդ սերիա', this)">8-րդ սերիա</button>
+        </div>
+
+        <nav class="player-controls">
+            <a href="javascript:history.back()" class="back-btn">
+                &#8592; Վերադառնալ
+            </a>
+        </nav>
+    </main>
+
+    <script>
+        function changeEpisode(url, title, btn) {
+            document.getElementById('main-player').src = url;
+            document.getElementById('current-ep-title').innerText = title;
+            
+            const buttons = document.querySelectorAll('.ep-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>

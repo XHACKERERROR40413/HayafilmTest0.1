@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Հայկական Ֆիլմեր - Hayafilm</title>
+    <style>
+        :root {
+            --poster-width: 280px;
+            --poster-aspect-ratio: 2 / 3;
+            --border-radius: 12px;
+            --transition-speed: 0.3s;
+            --shadow-normal: 0 8px 20px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 16px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f0f12;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 30px 15px;
+        }
+
+        /* Search Section */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #1a1a24;
+            border: 2px solid #2a2a3a;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .search-input::placeholder {
+            color: #888899;
+        }
+
+        .search-input:focus {
+            border-color: #e50914;
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+        }
+
+        /* Movie Grid Layout */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(var(--poster-width), 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        /* Movie Card Link Wrapper */
+        .movie-card {
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: var(--poster-width);
+            aspect-ratio: var(--poster-aspect-ratio);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: var(--shadow-normal);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .movie-card.hidden {
+            display: none;
+        }
+
+        .movie-card:hover,
+        .movie-card:focus-visible {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            outline: none;
+        }
+
+        /* Poster Image Styling */
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter var(--transition-speed) ease;
+        }
+
+        .movie-card:hover img {
+            filter: brightness(0.7);
+        }
+
+        /* Overlay Text Content */
+        .movie-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+            color: #ffffff;
+            transform: translateY(100%);
+            transition: transform var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .movie-card:hover .movie-info,
+        .movie-card:focus-visible .movie-info {
+            transform: translateY(0);
+        }
+
+        .movie-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .movie-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            background-color: #e50914;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Որոնել ֆիլմ..." 
+            autocomplete="off"
+        >
+    </div>
+
+    <main class="movie-grid">
+
+        <a href="husisharav.html" class="movie-card" aria-label="Հյուսիս-Հարավ">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYX6CUG2DzTwespcW2tu1R95bI57Hu9XPg66beV393lPieFQXNvs0qWyfzmMlqQ9p6NdaDQB8eyj0Q_ZRLqFl14pJ9l9DV_WtylJBPe3sjR9nPuowEbFObB7PO7W_vCr1x3F51lkbaEIM/s320/hyusis-harav.jpg" alt="Հյուսիս-Հարավ" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Հյուսիս-Հարավ</h2>
+            </div>
+        </a>
+
+        <a href="sirogortakirc.html" class="movie-card" aria-label="Սիրո Գործակից">
+            <img src="https://kinoarmblog.wordpress.com/wp-content/uploads/2016/08/18727.jpg?w=748" alt="Սիրո Գործակից" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Սիրո Գործակից</h2>
+            </div>
+        </a>
+
+        <a href="milon.html" class="movie-card" aria-label="Պահանջվում է միլիոնատեր">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSSwAm73IQvwsj3XXRORrzJSQw9bX8Kl77XNsNNjiu5L84I-KFO" alt="Պահանջվում է միլիոնատեր" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Պահանջվում է միլիոնատեր</h2>
+            </div>
+        </a>
+
+        <a href="poker.html" class="movie-card" aria-label="Փոքեր.AM">
+            <img src="https://hayertv.com/uploads/posts/2016-01/1452181121_708246.jpg" alt="Փոքեր.AM" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">POKER.AM</h2>
+            </div>
+        </a>
+
+        <a href="amanoryakharnashpot.html" class="movie-card" aria-label="Ամանորյա Խառնաշփոթ">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaaKqD95y4eXBps7rxzZ-jzq87qM2surZniErJy_NQOA&s=10" alt="Ամանորյա Խառնաշփոթ" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Ամանորյա Խառնաշփոթ</h2>
+            </div>
+        </a>
+
+        <a href="nax2hamr.html" class="movie-card" aria-label="Նախալեզու 2">
+            <img src="https://cdn.phototourl.com/free/2026-08-21-fe11b134-e91c-494f-a8b6-2684b20ee12a.jpg" alt="Նախալեզու 2" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Նախաճաշ 2 համար</h2>
+            </div>
+        </a>
+        <a href="vishap.html" class="movie-card" aria-label="Նախալեզու 2">
+            <img src="https://cdn.kinetoon.com/media/1733/poster-56028-f10cf4b08773.webp" alt="Նախալեզու 2" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Վիշապ</h2>
+            </div>
+        </a>
+        <a href="metpoqrqax.html" class="movie-card" aria-label="Նախալեզու 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5fzBm9KQeCm_v9gXYipjLQewA9xKDcjiw3bINT6lPw5MhhViusWIRNbVR&s=10" alt="Նախալեզու 2" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Մեծ Պատմություն Փոքր Քաղաքում</h2>
+            </div>
+        </a>
+        <a href="32kg.html" class="movie-card" aria-label="Ջուր և Կրակ">
+            <img src="https://i.ibb.co/MyLYyYQr/Gemini-Generated-Image-r9ka0ar9ka0ar9ka.jpg" alt="Ջուր և Կրակ" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">3+2 կգ</h2>
+            </div>
+        </a>
+        <a href="scochviski.html" class="movie-card" aria-label="Ջուր և Կրակ">
+            <img src="https://upload.wikimedia.org/wikipedia/hy/c/c9/%D5%8D%D5%AF%D5%B8%D5%BF%D5%B9_%D6%87_%D5%BE%D5%AB%D5%BD%D5%AF%D5%AB.png?utm_source=hy.wikipedia.org&utm_campaign=index&utm_content=original" alt="Ջուր և Կրակ" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Սկոտչ և վիսկի</h2>
+            </div>
+        </a>
+        <a href="supermama.html" class="movie-card" aria-label="Ջուր և Կրակ">
+            <img src="https://hayfilms.com/uploads/posts/2024-05/fghki.jpg" alt="Ջուր և Կրակ" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Հայկական</span>
+                <h2 class="movie-title">Սուպեր Մամա</h2>
+            </div>
+        </a>
+    </main>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const movieCards = document.querySelectorAll('.movie-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            movieCards.forEach((card) => {
+                const title = card.querySelector('.movie-title').textContent.toLowerCase();
+                
+                if (title.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

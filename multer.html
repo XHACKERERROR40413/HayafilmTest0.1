@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Մուլտֆիլմեր - Hayafilm</title>
+    <style>
+        :root {
+            --poster-width: 280px;
+            --poster-aspect-ratio: 2 / 3;
+            --border-radius: 12px;
+            --transition-speed: 0.3s;
+            --shadow-normal: 0 8px 20px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 16px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f0f12;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 30px 15px;
+        }
+
+        /* Search Section */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #1a1a24;
+            border: 2px solid #2a2a3a;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .search-input::placeholder {
+            color: #888899;
+        }
+
+        .search-input:focus {
+            border-color: #e50914;
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+        }
+
+        /* Movie Grid Layout */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(var(--poster-width), 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        /* Movie Card Link Wrapper */
+        .movie-card {
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: var(--poster-width);
+            aspect-ratio: var(--poster-aspect-ratio);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: var(--shadow-normal);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .movie-card.hidden {
+            display: none;
+        }
+
+        .movie-card:hover,
+        .movie-card:focus-visible {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            outline: none;
+        }
+
+        /* Poster Image Styling */
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter var(--transition-speed) ease;
+        }
+
+        .movie-card:hover img {
+            filter: brightness(0.7);
+        }
+
+        /* Overlay Text Content */
+        .movie-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+            color: #ffffff;
+            transform: translateY(100%);
+            transition: transform var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .movie-card:hover .movie-info,
+        .movie-card:focus-visible .movie-info {
+            transform: translateY(0);
+        }
+
+        .movie-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .movie-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            background-color: #e50914;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Որոնել մուլտֆիլմ..." 
+            autocomplete="off"
+        >
+    </div>
+
+    <main class="movie-grid">
+
+        <a href="AK.html" class="movie-card" aria-label="Անհաղթ Կլորիկները 1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVWbxgKOU86BKwouvJ4E6zoCDv3BqQJMOiW3cZQMie2Q&s=10" alt="Անհաղթ Կլորիկները 1" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Ամպամած է,հնարավոր է անձրև կոտլետների տեսքով</h2>
+            </div>
+        </a>
+
+        <a href="AK2.html" class="movie-card" aria-label="Անհաղթ Կլորիկները 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbJyE0ff_TmUkC5CiUpImMqkZ1Sl5XFoSbp81V9tb0Kg&s=10" alt="Անհաղթ Կլորիկները 2" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Ամպամած է,հնարավոր է անձրև կոտլետների տեսքով 2</h2>
+            </div>
+        </a>
+
+        <a href="rockshun.html" class="movie-card" aria-label="Ռոք Շուն">
+            <img src="https://armmix.org/uploads/posts/2022-11/1667034881_xfgh.webp" alt="Ռոք Շուն" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Ռոք Շուն</h2>
+            </div>
+        </a>
+
+        <a href="mp.html" class="movie-card" aria-label="Մադագասկար">
+            <img src="https://plain-eeur-prod-public.komododecks.com/202607/29/FcSqjXnkj5RzOWUORBpY/image.jpg" alt="Մադագասկար" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլtֆիլմ</span>
+                <h2 class="movie-title">Մադագասկարի պինգվիները</h2>
+            </div>
+        </a>
+
+        <a href="smtm.html" class="movie-card" aria-label="Սարդ-Մարդ. Տիեզերքի Միջով">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqqFhYZ7uq7YDTozqw7GDlnyVf9cVNgFpugbl6r_vTrA&s" alt="Սարդ-Մարդ. Տիեզերքի Միջով" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Սարդ-Մարդ. Տիեզերքի Միջով</h2>
+            </div>
+        </a>
+
+        <a href="smts2.html" class="movie-card" aria-label="Սարդ-Մարդ. Տիեզերքի Միջով 2">
+            <img src="https://i.ibb.co/7xqPYB91/1208647399.png" alt="Սարդ-Մարդ. Տիեզերքի Միջով 2" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Սարդ-մարդը։ Տիեզերքների սարդոստայնը</h2>
+            </div>
+        </a>
+
+        <a href="rango.html" class="movie-card" aria-label="Ռանգո">
+            <img src="https://hayertv.com/uploads/posts/2022-11/698403-b.jpg" alt="Ռանգո" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Ռանգո</h2>
+            </div>
+        </a>
+        <a href="anahit.html" class="movie-card" aria-label="Օլիմպիկոս">
+            <img src="https://www.tomsarkgh.am/thumbnails/Photo/577_325_inflate_proportional/27/84/02/slug-28427.jpg" alt="Օլիմպիկոս" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Անահիտ</h2>
+            </div>
+        </a>
+        <a href="olibikos.html" class="movie-card" aria-label="Օլիմպիկոս">
+            <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/56339e27-6201-4fee-afd6-b9e53495f004/576x" alt="Օլիմպիկոս" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Օլիմպիկոս</h2>
+            </div>
+        </a>
+        <a href="arqaaraq.html" class="movie-card" aria-label="Օլիմպիկոս">
+            <img src="https://moscowcinema.com/storage/images/movies/upcoming/avatars/580488749.webp" alt="Օլիմպիկոս" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Արքայից արքա</h2>
+            </div>
+            <a href="shreq.html" class="movie-card" aria-label="Օլիմպիկոս">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp0Z4Xfs8v7ED2eHOseaP4HvfqTKVtIzpajFwrEw1Bl4ZovuGzbxCw45c&s=10" alt="Օլիմպիկոս" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Շրեկ</h2>
+            </div>
+            <a href="inchvishap.html" class="movie-card" aria-label="Օլիմպիկոս">
+            <img src="https://hayertv.com/uploads/posts/2021-12/1640879161_zdgz.jpg" alt="Օլիմպիկոս" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Մուլտֆիլմ</span>
+                <h2 class="movie-title">Ինչպես վարժեցնել վիշապին</h2>
+            </div>
+            
+        </a>
+    </main>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const movieCards = document.querySelectorAll('.movie-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            movieCards.forEach((card) => {
+                const title = card.querySelector('.movie-title').textContent.toLowerCase();
+                
+                if (title.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

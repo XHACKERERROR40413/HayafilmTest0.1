@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Collection - Hayafilm</title>
+    <style>
+        :root {
+            --poster-width: 280px;
+            --poster-aspect-ratio: 2 / 3;
+            --border-radius: 12px;
+            --transition-speed: 0.3s;
+            --shadow-normal: 0 8px 20px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 16px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f0f12;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 30px 15px;
+        }
+
+        /* Search Section */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #1a1a24;
+            border: 2px solid #2a2a3a;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .search-input::placeholder {
+            color: #888899;
+        }
+
+        .search-input:focus {
+            border-color: #e50914;
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+        }
+
+        /* Movie Grid Layout */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(var(--poster-width), 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        /* Movie Card Link Wrapper */
+        .movie-card {
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: var(--poster-width);
+            aspect-ratio: var(--poster-aspect-ratio);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: var(--shadow-normal);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .movie-card.hidden {
+            display: none;
+        }
+
+        .movie-card:hover,
+        .movie-card:focus-visible {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            outline: none;
+        }
+
+        /* Poster Image Styling */
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter var(--transition-speed) ease;
+        }
+
+        .movie-card:hover img {
+            filter: brightness(0.7);
+        }
+
+        /* Overlay Text Content */
+        .movie-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+            color: #ffffff;
+            transform: translateY(100%);
+            transition: transform var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .movie-card:hover .movie-info,
+        .movie-card:focus-visible .movie-info {
+            transform: translateY(0);
+        }
+
+        .movie-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .movie-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            background-color: #e50914;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Search Input -->
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Որոնել ֆիլմ..." 
+            autocomplete="off"
+        >
+    </div>
+
+    <main class="movie-grid">
+
+        <a href="TXAA.html" class="movie-card" aria-label="Տղայի խոսք. Արյուն ասֆալտին">
+            <img src="https://films.bz/img-medium/uploads/posts/2023-11/1700826806_txayixosqearyuinear7a87faf480a84f.webp" alt="Տղայի խոսք. Արյուն ասֆալտին" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Սերիալ</span>
+                <h2 class="movie-title">Տղայի խոսք. Արյուն ասֆալտին</h2>
+            </div>
+        </a>
+
+        <a href="Hp1.html" class="movie-card" aria-label="Հարրի Փոթերը և Փիլիսոփայական քարը">
+            <img src="https://amimg.intrdb.com/uploads/posts/2021-01/1610474426_-.jpg" alt="Հարրի Փոթեր 1" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Հարրի Փոթերը և Փիլիսոփայական քարը</h2>
+            </div>
+        </a>
+
+        <a href="Sardmard1.html" class="movie-card" aria-label="Սարդ-Մարդ 1">
+            <img src="https://armmix.org/uploads/posts/2022-10/medium/zfhg.webp" alt="Սարդ-Մարդ 1" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Սարդ-Մարդ 1</h2>
+            </div>
+        </a>
+
+        <a href="sardmard2.html" class="movie-card" aria-label="Սարդ-Մարդ 2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPfrt95e6w6-qZI5J4Nxz1bwUzO4PqEL2cqlBe3cmqsw&s=10" alt="Սարդ-Մարդ 2" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Սարդ-Մարդ 2</h2>
+            </div>
+        </a>
+
+        <a href="Sardmard3.html" class="movie-card" aria-label="Սարդ մարդ 3">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj5CLYuVsNBNBiFOc3ZP6Vyj2eTsUCpgUVlfS8mew7tT140sC-DpJIBAlx&s=10" alt="Սարդ մարդ 3" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Սարդ մարդ 3. թշնամու արտացոլանք</h2>
+            </div>
+        </a>
+
+        <a href="ZarSardmard.html" class="movie-card" aria-label="Զարմանալի Սարդ մարդը">
+            <img src="https://armmix.org/uploads/posts/2024-01/zarmanali-sard-mardy.webp" alt="Զարմանալի Սարդ մարդը" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Զարմանալի Սարդ մարդը</h2>
+            </div>
+        </a>
+
+        <a href="karatetxa.html" class="movie-card" aria-label="Կարատե տղան">
+            <img src="https://armmix.org/uploads/posts/2025-04/cxfjg.webp" alt="Կարատե տղան" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Կարատե տղան</h2>
+            </div>
+        </a>
+        
+        <a href="karatetxal.html" class="movie-card" aria-label="Կարատե Տղան (Լեգենդը)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTmAhHaTwSDrctfZDPDAI_ee9Y3oSH7CMDEWUdJWDXc-C3lA3VDT9671o&s=10" alt="Կարատե Տղան" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Կարատե Տղան․ Լեգենդը</h2>
+            </div>
+        </a>
+
+        <a href="jurdarajg.html" class="movie-card" aria-label="Յուրայի դարաշրջանի զբոսայգին">
+            <img src="https://hayertv.com/uploads/posts/2022-10/1666746162_cghk.jpg" alt="Յուրայի դարաշրջանի զբոսայգին" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Յուրայի դարաշրջանի զբոսայգին</h2>
+            </div>
+        </a>
+
+        <a href="Hachiko.html" class="movie-card" aria-label="Հաչիկո մի շան պատմություն">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3vUR4H9BBjaU8-jQY8WWsnqMIPuwExwI4M9SDtH9tGpusVtk_0s9NLD8&s=10" alt="Հաչիկո մի շան պատմություն" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Հաչիկո մի շան պատմություն</h2>
+            </div>
+        </a>
+
+        <a href="arancalqerak.html" class="movie-card" aria-label="Առանց արգելակների">
+            <img src="https://amimg.intrdb.com/uploads/posts/2024-06/1717667299_aranc-argelakneri340.jpg" alt="Առանց արգելակների" loading="lazy">
+            <div class="movie-info">
+                <span class="movie-badge">Ֆիլմ</span>
+                <h2 class="movie-title">Առանց արգելակների</h2>
+            </div>
+        </a>
+
+    </main>
+
+    <!-- JavaScript for Live Filtering -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const movieCards = document.querySelectorAll('.movie-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            movieCards.forEach((card) => {
+                const title = card.querySelector('.movie-title').textContent.toLowerCase();
+                
+                if (title.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
